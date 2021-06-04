@@ -1,0 +1,2 @@
+init; figure(); [ts,ys] = ERK(LF(pars), NF, tspan, y0, 20000, struct('coeffGenerator', @ERK4, 'parameters', pars)); mesh(filter(ys))
+init; figure(); [ts,ys] = IMRK(LF(pars), NF, tspan, y0, 30000, struct('coeffGenerator', @IMRK4, 'parameters', pars)); mesh(filter(ys))
