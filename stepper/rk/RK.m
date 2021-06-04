@@ -6,6 +6,9 @@ function [t0, y0, ts, ys] = RK(f, tspan, y0, Nt, options)
 %
 %      y_{n+1} = y_n + \sum_{j=1}^s h b_j F(c_j, Y_j)
 %
+% The RK matrices are produced by calling
+%   [A, b, c] = options.coeffGenerator();
+%
 % PARAMETERS
 %   f       - rhs function
 %   tspan   - integration bounds

@@ -1,5 +1,6 @@
 function [A, b, c, d] = ERK4()
-%ERK4 Eqn (51) from S. Krogstad. "Generalized integrating factor methods for stiff PDEs", 2005
+%ERK4 Eqn (51) from S. Krogstad. "Generalized integrating factor methods 
+% for stiff PDEs", 2005
 
 s = 4; % number of stages 
 m = 4; % number of phi functions

@@ -1,5 +1,5 @@
 function [ts, ys, tcpu, tccpu] = ERK(L, N, tspan, y0, Nt, options)
-% ERK implements a generic exponential Runge Kutta integratorof the form:
+% ERK implements a generic exponential Runge Kutta integrator of the form:
 %
 %      Y_1 = N(t_n, y_n)
 %      Y_i = d(1, i-1) * exp(h d(2, i-1) L) y_n + \sum_{j=1}^{i-1} \alpha_{ij}(hL) N(c_j, Y_j)    i = 2, ..., s
@@ -11,6 +11,8 @@ function [ts, ys, tcpu, tccpu] = ERK(L, N, tspan, y0, Nt, options)
 %      alpha_{ij}(L) = \sum_{k=1}^m A(1,k,j,i) * \varphi_k( A(2,k,j,i) * L )
 %      beta_{j}(L)   = \sum_{k=1}^m b(1,k,j) * \varphi_k( b(2,k,j) * L)
 %
+% The Exponential coefficients are produced by calling
+%   [A, b, c, d] = options.coeffGenerator();
 % The information for the EXPRK A matrix is stored as a 4D array A(:,:,:,:) where A(:, :, j, i) specifies the linear
 % combination of phi functions that that comprise the (i+1,j)th entry in the A matrix. In particular:
 %

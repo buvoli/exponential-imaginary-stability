@@ -1,15 +1,11 @@
 function [ts, ys, tcpu, tccpu] = IMRK(L, N, tspan, y0, Nt, options)
-% IMRK implements a generic imex Runge Kutta integratorof the form:
+% IMRK implements a generic IMEX Runge-Kutta integrator of the form:
 %
 %      Y_i = y_n + \sum_{j=1}^{i-1} A(i,j) F(c_j, Y_j)    i = 1, ..., s
 %      y_{n+1} = d(i) y_n + \sum_{j=1}^s b(i) F(c_j, Y_j)
 %
-% where the functions
-%
-%      alpha_{ij}(L) = \sum_{k=1}^m A(1,k,j,i) * \varphi_k( A(2,k,j,i) * L )
-%      beta_{j}(L)   = \sum_{k=1}^m b(1,k,j) * \varphi_k( b(2,k,j) * L)
-%
-% The information for the IMRK method is stored as two pairs of A matrices and b vectors (one for implicit and one for explicit)
+% The IMRK matrices are produced by calling
+% [A_im, b_im, A_ex, b_ex, c] = options.coeffGenerator();
 %
 % PARAMETERS
 %   L       - vector, contains diagonal components of linear operator

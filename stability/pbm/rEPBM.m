@@ -1,5 +1,5 @@
 function [amp] = ampETDPBM(z1, z2_vec, options)
-%ampETDPBM amplification factor amp = \rho(M(z_1, z_2)) for Parallel Exponential Polynomial Block Method
+%ampETDPBM stability function R(z_1,z_2) = \rho(M(z_1, z_2)) for Parallel Exponential Polynomial Block Method
 % PARAMETERS
 %   z1     (scalar) - exponential term: z_1 = h * \lambda_1
 %   z2     (vector) - exponential term: z_2 = h * \lambda_2. Multiple z_2 can be passed in as a vector

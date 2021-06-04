@@ -1,7 +1,10 @@
 function [A_im, b_im, A_ex, b_ex, c] = IMRK4()
-%IMRK4 Fourth-order Kennedy-Carpenter
+%IMRK4 Fourth-order ARK4(3)6L[2]SA from
+%   C. A. Kennedy and M. H. Carpenter, Additive Runge-Kutta schemes for 
+%   convection-diffusion-reaction equations, Appl. Numer. Math., 44
+%   (2003), pp. 139-181.
 
-% -- implicit coefficients -----------------------------------------------------------
+% -- implicit coefficients ------------------------------------------------
 A_im = zeros(6);
 A_im(2,1) =   0.25;
 A_im(2,2) =   0.25;
@@ -26,7 +29,7 @@ A_im(6,6) =   0.25;
       
 b_im = [82889.0 / 524892.0, 0.0, 15625.0 /  83664.0, 69875.0 / 102672.0, - 2260.0 / 8211.0, 0.25];
 
-% -- explicit coefficients -----------------------------------------------------------
+% -- explicit coefficients ------------------------------------------------
 A_ex = zeros(6);
 A_ex(2,1) =   0.5;
 A_ex(3,1) =   13861.0          / 62500.0;
