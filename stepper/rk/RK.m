@@ -67,7 +67,7 @@ for n = 1 : Nt
     t0 = t0 + h;
     
     % -- Save Data -----------------------------------------------------------------------------------------------------
-    if(store_data && (mod(i,skip_rate) == 0 || i==Nt))
+    if(store_data && (mod(n,skip_rate) == 0 || n==Nt))
         ys(:,save_count) = y0;
         ts(save_count,:) = t0;
         save_count = save_count + 1;
