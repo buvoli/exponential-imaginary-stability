@@ -74,8 +74,8 @@ xtick_vec = linspace(min(z1_r), max(z1_r), options.NumTicks);
 ytick_vec = linspace(min(z2_r), max(z2_r), options.NumTicks);
 xticks(xtick_vec);
 yticks(ytick_vec);
-xlabel('$|z_1|$', 'interpreter', 'latex');
-ylabel('$|z_2|$', 'interpreter', 'latex');
+xlabel('$|k_1|$', 'interpreter', 'latex');
+ylabel('$|k_2|$', 'interpreter', 'latex');
 
 hold off;
 end

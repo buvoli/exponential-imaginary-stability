@@ -110,10 +110,10 @@ xticks(xtick_vec);
 yticks(ytick_vec);
 
 if(options.LabelAxis)
-    xlabel('$z_1$', 'interpreter', 'latex');
-    ylabel('$z_2$', 'interpreter', 'latex');
+    xlabel('$k_1$', 'interpreter', 'latex');
+    ylabel('$k_2$', 'interpreter', 'latex');
     if(options.ThreeDimensionalAmp)
-        zlabel('$|R(iz_1,iz_2)|$', 'interpreter', 'latex');
+        zlabel('$|R(ik_1,ik_2)|$', 'interpreter', 'latex');
     end
 end
 
