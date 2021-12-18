@@ -10,7 +10,7 @@ cd(wd);
 
 Nt = 2000;
 h  = diff(tspan) / Nt;
-ks = [0:pars.Nx/2 -pars.Nx/2+1:-1] * (2*pi/pars.Lx);
+ks = [0:pars.Nx/2 -pars.Nx/2+1:-1];% * (2*pi/pars.Lx);
 
 %% == Produce ERK Snapshot Plots ==========================================
 
@@ -39,7 +39,7 @@ surf(ts, xs, filter(ys)); shading interp;
 axis tight;
 zlim([0,2]);
 view([-60 48]); grid off;  
-zlabel('$\|u\|^2$', 'Interpreter', 'latex');
+zlabel('$|u|^2$', 'Interpreter', 'latex');
 ylabel('$x$', 'Interpreter', 'latex'); 
 xlabel('$t$', 'Interpreter', 'latex');
 set(gca, 'FontSize', 18, 'FontName', 'Minion Pro');
