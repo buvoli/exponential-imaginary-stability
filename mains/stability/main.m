@@ -51,7 +51,7 @@ for i = 1 : na
     rho = 0;
     
     TDRStabilityRegionPlot(amps{i}, z1_real, z2_reals{i}, z1_angle, z2_angle, rho, figure_options)
-    zlabel({'', '','$|R(iz_1,iz_2)|$'});        % Prevent export from clipping zlabel 
+    zlabel({'', '','$|R(ik_1,ik_2)|$'});        % Prevent export from clipping zlabel 
     xticks(z1_real([1 ceil(end/2) end]))        % limit x numticks to three
     yticks(z2_reals{i}([1 ceil(end/2) end]))    % limit y numticks to three
     exportFigure(fh, struct('SavePath', savename3D(m_names{i}, rho), 'Format', 'pdf', 'PaperPosition',   [0 0 8 8]));
