@@ -175,37 +175,6 @@ legend({'ERK4', 'ESDC6', 'EPBM4'}, 'Location', 'northoutside', 'Orientation', 'h
 set(gca, 'FontSize', 12);
 exportFigure(f, struct('Format', 'pdf', 'SavePath', fullfile('output', eqn_dir , 'ltc-legend-integrator'), 'PaperPosition', [0 0 6*num_pars 4]));
 
-% %% Legend Figure
-% f = figure();
-% 
-% legend_labels = cellfun(@(run) run.legend, runs, 'UniformOutput', false);
-% eqn_dir = [equation, '-', num2str(Nx)];
-% 
-% for i = 1 : num_pars
-%     h = semilogy(0, 0, ['s', line_style{i}], 'LineWidth', 3, 'MarkerSize', MS(i), 'Color', colors{i}, 'MarkerFaceColor', min(1, colors{i}), 'MarkerEdgeColor', colors{i} * .9); hold on;
-% end
-% legend(legend_labels(1:3:end), 'Location', 'northeastoutside', 'Orientation', 'vertical', 'Interpreter', 'latex'); legend boxoff;
-% set(gca, 'FontSize', 12);
-% exportFigure(f, struct('Format', 'pdf', 'SavePath', fullfile('output', eqn_dir , 'ltc-legend-erk'), 'PaperPosition', [0 0 6*num_pars 4]));
-% 
-% clf;
-% legend_labels = cellfun(@(run) run.legend, runs, 'UniformOutput', false);
-% for i = 1 : num_pars
-%     h = semilogy(0, 0, ['d', line_style{i}], 'LineWidth', 3, 'MarkerSize', MS(i), 'Color', colors{i}, 'MarkerFaceColor', min(1, colors{i}), 'MarkerEdgeColor', colors{i} * .9); hold on;
-% end
-% legend(legend_labels(2:3:end), 'Location', 'northeastoutside', 'Orientation', 'vertical', 'Interpreter', 'latex'); legend boxoff;
-% set(gca, 'FontSize', 12);
-% exportFigure(f, struct('Format', 'pdf', 'SavePath', fullfile('output', eqn_dir, 'ltc-legend-esdc'), 'PaperPosition', [0 0 6*num_pars 4]));
-% 
-% clf;
-% legend_labels = cellfun(@(run) run.legend, runs, 'UniformOutput', false);
-% for i = 1 : num_pars
-%     h = semilogy(0, 0, ['o', line_style{i}], 'LineWidth', 3, 'MarkerSize', MS(i), 'Color', colors{i}, 'MarkerFaceColor', min(1, colors{i}), 'MarkerEdgeColor', colors{i} * .9); hold on;
-% end
-% legend(legend_labels(3:3:end), 'Location', 'northeastoutside', 'Orientation', 'vertical', 'Interpreter', 'latex'); legend boxoff;
-% set(gca, 'FontSize', 12);
-% exportFigure(f, struct('Format', 'pdf', 'SavePath', fullfile('output', eqn_dir, 'ltc-legend-epbm'), 'PaperPosition', [0 0 6*num_pars 4]));
-
 function l = rhoLabel(rho)
     if(rho == 0)
         l = '\epsilon = 0';
@@ -232,7 +201,7 @@ end
 
 function l = epsilonLabel(epsilon)
     l = ['\mathbf{D} = -\mathbf{I},~ \epsilon = ', num2str(epsilon)];
-    l = [l, '\hspace{1em}']
+    l = [l, '\hspace{1em}'];
 end
 
 function l = blankLabel(rho)
