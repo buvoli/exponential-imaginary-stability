@@ -39,7 +39,7 @@ reference_ppars = mergeStructs(struct('epsilon', 0, 'rho', 0, 'rhouxx', 0), pars
 reference_options = struct('parameters', reference_ppars, 'max_ts_to_store', num_times);
 L_ref = LF(reference_ppars);
 RHS = @(t,y,pars) L_ref .* y + NF(t,y,pars);
-[~, ~, ts_ref, ys_ref] = rk4(RHS, tspan, y0(:), Nt_reference, reference_options);
+[~, ~, ts_ref, ys_ref] = RK(RHS, tspan, y0(:), Nt_reference, mergeStructs(reference_options, struct('coeffGenerator', @RK4C)));
 fprintf('done.\n');
 
 %% == prepare run parameters ==============================================

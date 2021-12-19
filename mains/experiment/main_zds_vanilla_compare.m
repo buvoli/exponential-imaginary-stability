@@ -32,7 +32,7 @@ switch (experiment_tag)
             struct('integrator', @ESDC,         'legend', 'ESDC2', 'options', struct('tau', lobpts(2, [0 1]), 'm', 2, 'parameters', pars), 'linestyle', 'd-')
             struct('integrator', @EPBM_PMFCmS,  'legend', 'EPBM2', 'options', struct('z', [-1 ; legpts(1)], 'b', -1 * ones(2), 'mS', 1, 'kappa', 0, 'parameters', pars, 'alpha', 2), 'linestyle', 'o-')
             struct('integrator', @IMRK,         'legend', 'IMRK2', 'options', struct('coeffGenerator', @IMRK2, 'parameters', pars), 'linestyle', 'k*--')
-            struct('integrator', @(L,N, tspan, y0, Nt, options) rk4(RHS, tspan, y0(:), Nt, options), 'legend', 'RK4', 'options', struct('parameters', pars), 'linestyle', 'p-')
+            struct('integrator', @(L,N, tspan, y0, Nt, options) RK(RHS, tspan, y0(:), Nt, options), 'legend', 'RK4', 'options', struct('parameters', pars, 'coeffGenerator', @RK4C), 'linestyle', 'p-')
         };
     case 'third-order' % Appendix Figure
         runs = {
@@ -40,7 +40,7 @@ switch (experiment_tag)
             struct('integrator', @ESDC,         'legend', 'ESDC3', 'options', struct('tau', lobpts(3, [0 1]), 'm', 2, 'parameters', pars), 'linestyle', 'd-')
             struct('integrator', @EPBM_PMFCmS,  'legend', 'EPBM3', 'options', struct('z', [-1 ; legpts(2)], 'b', -1 * ones(3), 'mS', 1, 'kappa', 1, 'parameters', pars, 'alpha', 1), 'linestyle', 'o-')
             struct('integrator', @IMRK,         'legend', 'IMRK3', 'options', struct('coeffGenerator', @IMRK3, 'parameters', pars), 'linestyle', 'k*--')
-            struct('integrator', @(L,N, tspan, y0, Nt, options) rk4(RHS, tspan, y0(:), Nt, options), 'legend', 'RK4', 'options', struct('parameters', pars), 'linestyle', 'p-')
+            struct('integrator', @(L,N, tspan, y0, Nt, options) RK(RHS, tspan, y0(:), Nt, options), 'legend', 'RK4', 'options', struct('parameters', pars, 'coeffGenerator', @RK4C), 'linestyle', 'p-')
         };
     otherwise % default experiment for generating Figure 2
         runs = {
@@ -48,7 +48,7 @@ switch (experiment_tag)
             struct('integrator', @ESDC,         'legend', 'ESDC6', 'options', struct('tau', lobpts(4, [0 1]), 'm', 5, 'parameters', pars), 'linestyle', 'd-')
             struct('integrator', @EPBM_PMFCmS,  'legend', 'EPBM5', 'options', struct('z', [-1 ; legpts(4)], 'b', -1 * ones(5), 'mS', 1, 'kappa', 1, 'parameters', pars, 'alpha', 1), 'linestyle', 'o-')
             struct('integrator', @IMRK,         'legend', 'IMRK4', 'options', struct('coeffGenerator', @IMRK4, 'parameters', pars), 'linestyle', 'k*--')
-            struct('integrator', @(L,N, tspan, y0, Nt, options) rk4(RHS, tspan, y0(:), Nt, options), 'legend', 'RK4', 'options', struct('parameters', pars), 'linestyle', 'p-')
+            struct('integrator', @(L,N, tspan, y0, Nt, options) RK(RHS, tspan, y0(:), Nt, options), 'legend', 'RK4', 'options', struct('parameters', pars, 'coeffGenerator', @RK4C), 'linestyle', 'p-')
         };
 end
 
@@ -59,8 +59,7 @@ parfor i = 1 : num_runs
     prob_pars = runs{i}.options.parameters;
     fprintf(' Running Integrator %s\n', runs{i}.legend);
     for j = 1 : num_Nts
-        
-        
+
         prob_pars.stepsize = tspan(end) / Nts(j);
         fprintf('     Nt = %i/%i...', j , num_Nts);
         
